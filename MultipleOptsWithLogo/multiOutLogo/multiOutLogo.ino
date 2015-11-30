@@ -107,8 +107,8 @@ void loop()
                         client.println();
                         webFile = SD.open("index.htm");        // open web page file
                     }                 
-                    else if (StrContains(HTTP_req, "GET /Logo_KCC.png")) {
-                        webFile = SD.open("Logo_KCC.png");
+                    else if (StrContains(HTTP_req, "GET /banner.gif")) {
+                        webFile = SD.open("banner.gif");
                         if (webFile) {
                             client.println("HTTP/1.1 200 OK");
                             client.println();
@@ -145,57 +145,57 @@ void loop()
     } // end if (client)
 }
 
-// checks if received HTTP request is switching on/off LEDs
+// checks if received HTTP request is switching on/off Devices
 // also saves the state of the Devices
 void SetDEVs(void)
 {   
     if (StrContains(HTTP_req, "DEV1=1")) {
-        DEV_state[0] = 1;  // save LED state
+        DEV_state[0] = 1;  // save Device state
         digitalWrite(LAMP1, HIGH);
     }
     else if (StrContains(HTTP_req, "DEV1=0")) {
-        DEV_state[0] = 0;  // save LED state
+        DEV_state[0] = 0;  // save Device state
         digitalWrite(LAMP1, LOW);
     }   
      if (StrContains(HTTP_req, "DEV2=1")) {
-        DEV_state[1] = 1;  // save LED state
+        DEV_state[1] = 1;  // save Device state
         digitalWrite(LAMP2, HIGH);
     }
     else if (StrContains(HTTP_req, "DEV2=0")) {
-        DEV_state[1] = 0;  // save LED state
+        DEV_state[1] = 0;  // save Device state
         digitalWrite(LAMP2, LOW);
     }   
 
     if (StrContains(HTTP_req, "DEV3=1")) {
-        DEV_state[2] = 1;  // save LED state
+        DEV_state[2] = 1;  // save Device state
         digitalWrite(LAMP3, HIGH);
     }
     else if (StrContains(HTTP_req, "DEV3=0")) {
-        DEV_state[2] = 0;  // save LED state
+        DEV_state[2] = 0;  // save Device state
         digitalWrite(LAMP3, LOW);
     }   
 
      if (StrContains(HTTP_req, "DEV4=1")) {
-        DEV_state[3] = 1;  // save LED state
+        DEV_state[3] = 1;  // save Device state
         digitalWrite(FAN, HIGH);
     }
     else if (StrContains(HTTP_req, "DEV4=0")) {
-        DEV_state[3] = 0;  // save LED state
+        DEV_state[3] = 0;  // save Device state
         digitalWrite(FAN, LOW);
     }   
 
     if (StrContains(HTTP_req, "DEV5=1")) {
-        DEV_state[4] = 1;  // save LED state
+        DEV_state[4] = 1;  // save Device state
         digitalWrite(HEATER, HIGH);
     }
     else if (StrContains(HTTP_req, "DEV5=0")) {
-        DEV_state[4] = 0;  // save LED state
+        DEV_state[4] = 0;  // save Device state
         digitalWrite(HEATER, LOW);
     }          
 }
 
 // send the XML file with analog values, switch status
-//  and LED status
+//  and Device status
 void XML_response(EthernetClient cl)
 {  
     cl.print("<?xml version = \"1.0\" ?>");
