@@ -14,7 +14,10 @@
 byte mac[] = {
   0x14, 0x8F, 0xC6, 0x9C, 0xF1, 0x2B
 };
-IPAddress ip(192, 168, 0, 120); // IP address, may need to change depending on network
+IPAddress ip(192, 168, 10, 120); // IP address, may need to change depending on network
+
+// changed IP address on 21-jan-2017
+
 EthernetServer server(80);  // create a server at port 80
 File webFile;               // the web page file on the SD card
 char HTTP_req[REQ_BUF_SZ] = {0}; // buffered HTTP request stored as null terminated string
